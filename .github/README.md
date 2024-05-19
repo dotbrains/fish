@@ -7,7 +7,7 @@ This repository contains my sensible defaults for fish.
 The contents of this repository should be placed in your `$HOME/.config`. 
 
 ```bash
-git clone https://github.com/nicholasadamou/fish.git $HOME/.config/fish
+git clone https://github.com/dotbrains/fish.git $HOME/.config/fish
 ```
 
 ## License
