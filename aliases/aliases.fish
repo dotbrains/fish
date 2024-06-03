@@ -345,3 +345,12 @@ if type -q piknik
     # pkpr : extract clipboard content sent using the pkfr command
     alias pkpr "piknik -paste | tar xzhpvf -"
 end
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# `cz` commitizen - Simple commit conventions for internet citizens.
+# see: https://commitizen.github.io/cz-cli/
+
+if type -q npx
+    alias cz "npx cz"
+end
