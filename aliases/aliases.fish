@@ -109,6 +109,11 @@ if type -q exa
     alias l "exa -l"
 end
 
+if type -q eza
+    alias ll "eza -l -g --icons"
+    alias lla "ll -a"
+end
+
 # List only directories
 alias lsd "ls -lF --color | grep --color=never '^d'"
 # List only hidden files

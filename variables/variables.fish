@@ -1,36 +1,42 @@
 # fish variables
 
+set fish_greeting ""
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # NOTE: There is probably a sexier nicer way to do this, but until I figure that out I am manually unset PATH
 set -gx PATH
 
+# Ensure we start with the system default PATH
+set -gx DEFAULT_SYSTEM_PATHS /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+
 # Sets necessary PATH defaults
-set -gx PATH $PATH /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/local/sbin /sbin $HOME/.fig/bin $HOME/.local/bin $HOME/.local/bin/tmux-session $HOME/.local/bin/etcher-cli /home/linuxbrew/.linuxbrew/bin /snap/bin $HOME/"set-me-up" $HOME/"set-me-up"/"set-me-up-installer"
+set -gx DEFAULT_PATHS $HOME/.local/bin $HOME/set-me-up $HOME/set-me-up/set-me-up-installer /opt/homebrew/bin $HOME/.local/bin/tmux-session $HOME/.local/bin/etcher-cli $HOME/.fig/bin $HOME/go $HOME/go/bin
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Linux-specific PATH additions
+set -gx LINUX_PATHS /home/linuxbrew/.linuxbrew/bin /snap/bin
 
-# Catppuccin for fzf (Macchiato)
-# see: https://github.com/catppuccin/fzf
-# set -Ux FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS "\
-# 	--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
-# 	--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
-# 	--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+# Reset PATH to default system paths
+set -gx PATH $DEFAULT_SYSTEM_PATHS
 
-# Catppuccin for Bat (Macchiato)
-# see: https://github.com/catppuccin/bat
-# set BAT_THEME "Catppuccin-macchiato"
+# Function to add paths to PATH if they exist and are not already in PATH
+function add_paths
+    for path in $argv
+        if test -d $path
+            if not contains $path $PATH
+                set -a PATH $path
+            end
+        end
+    end
+end
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Add default paths
+add_paths $DEFAULT_PATHS
 
-# Nord for fzf
-# see: https://github.com/ianchesal/nord-fzf
-set -Ux FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS '
-    --color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
-    --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
-    --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
-    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
-
-# Nord for Bat
-set BAT_THEME "Nord"
+# Add Linux-specific paths if on Linux
+if string match -r '^linux-gnu' (uname -s)
+    add_paths $LINUX_PATHS
+end
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -44,11 +50,12 @@ if type -q gem
 	end
 end
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Dotfiles directory
 set DOTFILES $HOME/"set-me-up"
 
-# Theme
-# set tacklebox_theme entropy
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Which modules would you like to load? (modules can be found in ~/.tackle/modules/*)
 # Custom modules may be added to ~/.tacklebox/modules/
@@ -58,12 +65,27 @@ set DOTFILES $HOME/"set-me-up"
 # Custom plugins may be added to ~/.tacklebox/plugins/
 # Example format: set tacklebox_plugins python extract
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Change spacefish char
 # see: https://spacefish.matchai.me/docs/Options.html#char
 set SPACEFISH_CHAR_SYMBOL "\$"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+if type -q bat
+    set -g FZF_PREVIEW_FILE_CMD "bat --style=numbers --color=always --line-range :500"
+end
+
+set -g FZF_LEGACY_KEYBINDINGS 0
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Configure Neovim as default editor
 
 set EDITOR "nvim"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Abbreviate the current working directory in the prompt to show only the first character of each directory
+set -g fish_prompt_pwd_dir_length 1
