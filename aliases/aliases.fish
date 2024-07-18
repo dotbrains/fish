@@ -27,14 +27,14 @@ function randpw --description "generate a random password"
     dd if=/dev/urandom bs=1 count=16 2>/dev/null | base64 | rev | cut -b 2- | rev
 end
 
-function cd --description "auto exa for each cd"
-    if type -q exa
+function cd --description "auto eza for each cd"
+    if type -q eza
         if [ -n $argv[1] ]
             builtin cd $argv[1]
-            and exa
+            and eza
         else
             builtin cd ~
-            and exa
+            and eza
         end
     else
         if [ -n $argv[1] ]
@@ -102,11 +102,11 @@ end
 
 # 'ls' aliases
 
-if type -q exa
-    alias ls "exa"
+if type -q eza
+    alias ls "eza"
 
     # List all files colorized in long format
-    alias l "exa -l"
+    alias l "eza -l"
 end
 
 if type -q eza
@@ -185,7 +185,7 @@ if type -q brew
     function brewu --description "updates and upgrades brew"
         brew upgrade
         brew cleanup
-        
+
         if [ "$(uname)" = "Darwin" ]; then
             brew cask upgrade
 
@@ -269,7 +269,7 @@ case Linux
     # Check for systemd-resolved
     if systemctl is-active --quiet systemd-resolved
         alias clear-dns-cache='sudo systemd-resolve --flush-caches'
-    
+
     # Check for nscd
     else if type -q nscd
         alias clear-dns-cache='sudo nscd -i hosts'
