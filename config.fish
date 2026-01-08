@@ -1,25 +1,33 @@
+# ==============================================================================
+# Core Configuration
+# ==============================================================================
+
+# Load colorscheme and theme settings
 source "$HOME/.config/fish/colorscheme/colorscheme.fish"
 
-# load aliases
+# Load aliases (modular alias files)
 source "$HOME/.config/fish/aliases/aliases.fish"
 
-# load fish variables
+# Load environment variables and PATH configuration
 source "$HOME/.config/fish/variables/variables.fish"
 
-# load key bindings
+# Load custom key bindings
 source "$HOME/.config/fish/keybindings/keybindings.fish"
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ==============================================================================
+# Local Configuration
+# ==============================================================================
 
-# load local fish configurations
-
+# Load local machine-specific configurations (not tracked in git)
 if test -f "$HOME/.fish.local"  
     source "$HOME/.fish.local"
 end
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ==============================================================================
+# External Tool Initialization
+# ==============================================================================
 
-# load 'brew' configurations
+# Initialize Homebrew
 
 # see: https://docs.brew.sh/Installation
 if test (uname) = "Darwin" # Check if OS is macOS
@@ -39,9 +47,7 @@ if test (uname) = "Linux" # Check if OS is Linux
     end
 end
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# bootstrap installation of fisher
+# Initialize Fisher plugin manager
 # see: https://github.com/jorgebucaran/fisher#bootstrap-installation
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
@@ -49,40 +55,32 @@ if not functions -q fisher
     fish -c fisher
 end
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# load 'thefuck' configurations
+# Initialize thefuck (command corrector)
 # see: https://github.com/nvbn/thefuck/wiki/Shell-aliases#fish
 if type -q thefuck
     thefuck --alias | source
 end
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# load 'zoxide' configurations
+# Initialize zoxide (smart cd)
 # see: https://github.com/ajeetdsouza/zoxide
 if type -q zoxide
     zoxide init fish | source
 end
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# load starship prompt
+# Initialize starship prompt
 # see: https://starship.rs
 if type -q starship
 	starship init fish | source
 end
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ==============================================================================
+# Session Setup
+# ==============================================================================
 
-# Clear system messages (system copyright notice, the date
-# and time of the last login, the message of the day, etc.).
-
+# Clear system messages (copyright notice, login time, MOTD, etc.)
 clear
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# start tmux upon executing fish
+# Start tmux upon executing fish (optional, currently disabled)
 # see: https://github.com/fish-shell/fish-shell/issues/4434#issuecomment-332743061
 # if status is-interactive
 # and not set -q TMUX
