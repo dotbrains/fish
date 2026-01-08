@@ -19,7 +19,7 @@ source "$HOME/.config/fish/keybindings/keybindings.fish"
 # ==============================================================================
 
 # Load local machine-specific configurations (not tracked in git)
-if test -f "$HOME/.fish.local"  
+if test -f "$HOME/.fish.local"
     source "$HOME/.fish.local"
 end
 
@@ -34,7 +34,7 @@ if test (uname) = "Darwin" # Check if OS is macOS
     if test -f /opt/homebrew/bin/brew
         eval "$(/opt/homebrew/bin/brew shellenv)"
     end
-    
+
     if test -f /usr/local/bin/brew
         eval "$(/usr/local/bin/brew shellenv)"
     end
@@ -78,7 +78,7 @@ end
 # ==============================================================================
 
 # Clear system messages (copyright notice, login time, MOTD, etc.)
-clear
+# clear
 
 # Start tmux upon executing fish (optional, currently disabled)
 # see: https://github.com/fish-shell/fish-shell/issues/4434#issuecomment-332743061
@@ -86,4 +86,3 @@ clear
 # and not set -q TMUX
 #    exec tmux
 # end
-
