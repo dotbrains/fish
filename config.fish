@@ -47,6 +47,12 @@ if test (uname) = "Linux" # Check if OS is Linux
     end
 end
 
+# Initialize starship prompt
+# see: https://starship.rs
+if type -q starship
+	starship init fish | source
+end
+
 # Initialize Fisher plugin manager
 # see: https://github.com/jorgebucaran/fisher#bootstrap-installation
 if not functions -q fisher
@@ -65,12 +71,6 @@ end
 # see: https://github.com/ajeetdsouza/zoxide
 if type -q zoxide
     zoxide init fish | source
-end
-
-# Initialize starship prompt
-# see: https://starship.rs
-if type -q starship
-	starship init fish | source
 end
 
 # ==============================================================================
