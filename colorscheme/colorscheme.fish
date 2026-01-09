@@ -1,5 +1,11 @@
 # fish colorscheme
 
+# Load terminal theme using theme.sh
+# see: https://github.com/lemnos/theme.sh
+if type -q theme
+    theme gruvbox-material-dark-medium
+end
+
 # Available themes: nord, gruvbox
 # Set FISH_THEME environment variable to change (default: gruvbox)
 set -q FISH_THEME; or set -g FISH_THEME gruvbox
