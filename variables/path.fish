@@ -45,3 +45,20 @@ if type -q gem
 		set -gx PATH $PATH (gem environment gemdir)/bin
 	end
 end
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# pnpm configuration
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+	set -gx PATH $PNPM_HOME $PATH
+end
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# LM Studio CLI
+if test -d $HOME/.lmstudio/bin
+	if not contains $HOME/.lmstudio/bin $PATH
+		set -gx PATH $PATH $HOME/.lmstudio/bin
+	end
+end
