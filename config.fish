@@ -2,9 +2,6 @@
 # Core Configuration
 # ==============================================================================
 
-# Load colorscheme and theme settings
-source "$HOME/.config/fish/colorscheme/colorscheme.fish"
-
 # Load aliases (modular alias files)
 source "$HOME/.config/fish/aliases/aliases.fish"
 
@@ -77,6 +74,13 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
+
+# ==============================================================================
+# Theme and Colorscheme
+# ==============================================================================
+
+# Load colorscheme and theme settings (after PATH is fully initialized)
+source "$HOME/.config/fish/colorscheme/colorscheme.fish"
 
 # ==============================================================================
 # Session Setup
