@@ -14,6 +14,11 @@ source "$HOME/.config/fish/variables/variables.fish"
 # Load custom key bindings
 source "$HOME/.config/fish/keybindings/keybindings.fish"
 
+# Load functions from subdirectories (Fish doesn't autoload from subdirs)
+for file in $HOME/.config/fish/functions/**/*.fish
+    source $file
+end
+
 # ==============================================================================
 # Local Configuration
 # ==============================================================================
