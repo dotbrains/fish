@@ -16,6 +16,7 @@ Add simple aliases to the appropriate file in the `aliases/` directory:
 - `aliases/tools.fish` - External tools
 
 Example:
+
 ```fish
 # In aliases/git.fish
 alias gs "git status"
@@ -34,7 +35,9 @@ end
 
 ## Adding Functions
 
-Functions should be placed in separate files in the `functions/` directory or its subdirectories. Choose the appropriate subdirectory based on the function's purpose:
+Functions should be placed in separate files in the `functions/`
+directory or its subdirectories. Choose the appropriate subdirectory
+based on the function's purpose:
 
 - `functions/git/` - Git and version control
 - `functions/navigation/` - Directory navigation

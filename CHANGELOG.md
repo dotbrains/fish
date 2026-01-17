@@ -10,8 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Modular Fish shell configuration with organized structure
-- 20+ custom functions categorized by purpose (git, navigation, package management, processes)
-- Organized variables split into focused modules (core, XDG, PATH, version managers, editor, tools)
+- 20+ custom functions categorized by purpose (git, navigation,
+  package management, processes)
+- Organized variables split into focused modules (core, XDG, PATH,
+  version managers, editor, tools)
 - 6 alias categories: core, filesystem, git, package managers, system, and tools
 - Color schemes: Nord and Catppuccin themes for fzf and bat
 - Fisher plugin management with curated plugins
