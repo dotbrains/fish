@@ -241,6 +241,7 @@ fish -d 4
 ### Alias Not Working
 
 Make sure:
+
 1. Alias is defined in the correct file
 2. `aliases/aliases.fish` sources that file
 3. No function with the same name exists (functions override aliases)

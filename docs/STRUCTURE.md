@@ -1,10 +1,11 @@
 # Fish Configuration Structure
 
-This document explains the directory layout and sourcing order of the Fish shell configuration.
+This document explains the directory layout and sourcing order of the Fish
+shell configuration.
 
 ## Directory Layout
 
-```
+```text
 fish/
 ├── README.md                 # Main documentation
 ├── config.fish               # Main configuration entry point
@@ -105,9 +106,13 @@ The `config.fish` file sources configurations in this order:
 
 ## Functions
 
-Fish automatically loads functions from the `functions/` directory on-demand, including functions in subdirectories. Functions are lazy-loaded when first called, which improves shell startup time.
+Fish automatically loads functions from the `functions/` directory on-demand,
+including functions in subdirectories. Functions are lazy-loaded when first
+called, which improves shell startup time.
 
-You don't need to explicitly source function files - Fish handles this automatically. The functions are organized into subdirectories by category for better maintainability:
+You don't need to explicitly source function files - Fish handles this
+automatically. The functions are organized into subdirectories by category for
+better maintainability:
 
 - `git/` - Git and version control functions
 - `navigation/` - Directory navigation helpers
@@ -125,4 +130,5 @@ If your alias needs conditionals, loops, or multiple commands, it should be a fu
 
 ## Adding New Configurations
 
-See [CUSTOMIZATION.md](CUSTOMIZATION.md) for instructions on adding your own aliases, functions, and configurations.
+See [CUSTOMIZATION.md](CUSTOMIZATION.md) for instructions on adding your own
+aliases, functions, and configurations.
