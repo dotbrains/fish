@@ -1,5 +1,8 @@
 # fish
 
+[![Lint](https://github.com/dotbrains/fish/actions/workflows/lint.yml/badge.svg)](https://github.com/dotbrains/fish/actions/workflows/lint.yml)
+[![Release](https://github.com/dotbrains/fish/actions/workflows/release.yml/badge.svg)](https://github.com/dotbrains/fish/actions/workflows/release.yml)
+
 This repository contains my sensible defaults for fish.
 
 ## Usage
