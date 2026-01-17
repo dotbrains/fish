@@ -68,6 +68,7 @@ Fish will automatically load this function when you first call it.
 5. **Provide help** - Consider adding a `--help` option
 
 Example:
+
 ```fish
 function myfunction --description "Example function with argument handling"
     # Show help
@@ -98,6 +99,7 @@ Add environment variables to the appropriate file in the `variables/` directory:
 - `variables/tools.fish` - Tool-specific settings (fzf, dotfiles, etc.)
 
 Example:
+
 ```fish
 # In variables/tools.fish
 set -x MY_TOOL_CONFIG "value"
@@ -130,6 +132,7 @@ bind \cy my_keybinding_func
 ```
 
 Common key codes:
+
 - `\cx` - Ctrl+X
 - `\e` - Alt/Option
 - `\e[A` - Up arrow
@@ -137,7 +140,8 @@ Common key codes:
 
 ## Local Configuration
 
-For machine-specific configurations that you don't want to commit to the repository, create `~/.fish.local`:
+For machine-specific configurations that you don't want to commit to the
+repository, create `~/.fish.local`:
 
 ```fish
 # ~/.fish.local
@@ -147,11 +151,13 @@ set -x MY_SECRET_TOKEN "secret"
 alias mylocalalias "some command"
 ```
 
-This file is already referenced in `config.fish` and will be sourced if it exists.
+This file is already referenced in `config.fish` and will be sourced if
+it exists.
 
 ## Plugin Management
 
-This configuration uses [Fisher](https://github.com/jorgebucaran/fisher) for plugin management.
+This configuration uses [Fisher](https://github.com/jorgebucaran/fisher)
+for plugin management.
 
 ### Installing Plugins
 
@@ -208,19 +214,26 @@ type myfunction
 ### Function Not Found
 
 Make sure:
-1. File name matches function name: `myfunction.fish` contains `function myfunction`
-2. File is in `functions/` directory or a subdirectory (e.g., `functions/utilities/`)
-3. File has correct syntax (run `fish -n functions/utilities/myfunction.fish` to check)
-4. Fish can find functions in subdirectories automatically - no special configuration needed
+
+1. File name matches function name: `myfunction.fish` contains
+   `function myfunction`
+2. File is in `functions/` directory or a subdirectory
+   (e.g., `functions/utilities/`)
+3. File has correct syntax (run
+   `fish -n functions/utilities/myfunction.fish` to check)
+4. Fish can find functions in subdirectories automatically - no special
+   configuration needed
 
 ### Configuration Not Loading
 
 Check for syntax errors:
+
 ```fish
 fish -n config.fish
 ```
 
 Enable debug mode:
+
 ```fish
 fish -d 4
 ```
