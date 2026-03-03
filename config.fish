@@ -75,6 +75,13 @@ if type -q zoxide
     zoxide init fish | source
 end
 
+# Re-activate nvm node after PATH reset
+# (conf.d/nvm.fish activates node before config.fish, but path.fish resets PATH)
+if set --query nvm_current_version nvm_data
+    contains $nvm_data/$nvm_current_version/bin $PATH
+    or set --prepend PATH $nvm_data/$nvm_current_version/bin
+end
+
 # ==============================================================================
 # Theme and Colorscheme
 # ==============================================================================
