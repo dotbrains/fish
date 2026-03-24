@@ -26,7 +26,7 @@ switch $FISH_THEME
     case gruvbox
         # Gruvbox Dark Medium for fzf
         # see: https://github.com/morhetz/gruvbox
-        set -Ux FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS '
+        set -gx FZF_DEFAULT_OPTS '
             --color=fg:#d5c4a1,bg:#282828,hl:#fabd2f
             --color=fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
             --color=info:#83a598,prompt:#fb4934,pointer:#b8bb26
@@ -38,7 +38,7 @@ switch $FISH_THEME
     case nord
         # Nord for fzf
         # see: https://github.com/ianchesal/nord-fzf
-        set -Ux FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS '
+        set -gx FZF_DEFAULT_OPTS '
             --color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
             --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
             --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
