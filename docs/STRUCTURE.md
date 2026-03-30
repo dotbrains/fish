@@ -18,7 +18,8 @@ fish/
 │   ├── package-managers.fish # Package manager shortcuts (brew, npm, pip, etc.)
 │   ├── system.fish           # System utilities (DNS, IP, desktop)
 │   ├── tools.fish            # External tools (wttr, piknik, commitizen)
-│   └── claude.fish           # Claude Code aliases
+│   ├── claude.fish           # Claude Code aliases
+│   └── codex.fish            # Codex CLI aliases
 ├── colorscheme/              # Theme and color configurations
 │   └── colorscheme.fish      # Nord/Catppuccin themes for fzf and bat
 ├── completions/              # Custom completion scripts

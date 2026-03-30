@@ -23,3 +23,6 @@ source "$HOME/.config/fish/aliases/tools.fish"
 
 # Claude Code
 source "$HOME/.config/fish/aliases/claude.fish"
+
+# Codex CLI
+source "$HOME/.config/fish/aliases/codex.fish"
