@@ -28,7 +28,7 @@ git clone https://github.com/dotbrains/fish.git $HOME/.config/fish
   package management, processes, and more
 - **Organized variables** - Environment variables split into focused modules
   (core, XDG, PATH, version managers, editor, tools)
-- **6 alias categories** - Core, filesystem, git, package managers, system, and tools
+- **7 alias categories** - Core, filesystem, git, package managers, system, tools, and Claude Code
 - **Color schemes** - Nord and Catppuccin themes for fzf and bat
 - **Plugin management** - Fisher integration with curated plugins
 - **XDG compliant** - Follows XDG Base Directory Specification
