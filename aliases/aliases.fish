@@ -20,3 +20,6 @@ source "$HOME/.config/fish/aliases/system.fish"
 
 # External tools (wttr, piknik, commitizen)
 source "$HOME/.config/fish/aliases/tools.fish"
+
+# Claude Code
+source "$HOME/.config/fish/aliases/claude.fish"
