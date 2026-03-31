@@ -26,3 +26,6 @@ source "$HOME/.config/fish/aliases/claude.fish"
 
 # Codex CLI
 source "$HOME/.config/fish/aliases/codex.fish"
+
+# pi coding agent
+source "$HOME/.config/fish/aliases/pi.fish"
