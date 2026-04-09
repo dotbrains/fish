@@ -82,6 +82,12 @@ if set --query nvm_current_version nvm_data
     or set --prepend PATH $nvm_data/$nvm_current_version/bin
 end
 
+# Ensure local shim/bin precedence after external tool PATH initializers (e.g. Homebrew)
+if set idx (contains -i $HOME/.local/bin $PATH)
+    set -e PATH[$idx]
+end
+set --prepend PATH $HOME/.local/bin
+
 # ==============================================================================
 # Theme and Colorscheme
 # ==============================================================================
