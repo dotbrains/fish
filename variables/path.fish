@@ -63,8 +63,3 @@ if test -d $HOME/.lmstudio/bin
 	end
 end
 
-# Ensure user-local shims/binaries take precedence over package manager installs
-if set idx (contains -i $HOME/.local/bin $PATH)
-    set -e PATH[$idx]
-end
-set -gx PATH $HOME/.local/bin $PATH
