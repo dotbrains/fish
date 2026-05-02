@@ -69,11 +69,6 @@ if type -q thefuck
     thefuck --alias | source
 end
 
-# Initialize zoxide (smart cd)
-# see: https://github.com/ajeetdsouza/zoxide
-if type -q zoxide
-    zoxide init fish | source
-end
 
 # Re-activate nvm node after PATH reset
 # (conf.d/nvm.fish activates node before config.fish, but path.fish resets PATH)
@@ -108,3 +103,11 @@ source "$HOME/.config/fish/colorscheme/colorscheme.fish"
 # and not set -q TMUX
 #    exec tmux
 # end
+
+# Initialize zoxide (smart cd)
+# Keep this block at the very end of config.fish.
+# zoxide doctor warns when initialization is not last.
+# see: https://github.com/ajeetdsouza/zoxide
+if type -q zoxide
+    zoxide init fish | source
+end
