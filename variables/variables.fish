@@ -20,3 +20,6 @@ source "$HOME/.config/fish/variables/editor.fish"
 
 # Tool-specific configuration (dotfiles, fzf)
 source "$HOME/.config/fish/variables/tools.fish"
+
+# SSH agent routing (1Password on macOS)
+source "$HOME/.config/fish/variables/ssh.fish"
