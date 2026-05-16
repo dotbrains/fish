@@ -4,4 +4,5 @@
 if type -q codex
     alias cx 'codex --full-auto'
     alias cxd 'codex --dangerously-bypass-approvals-and-sandbox'
+    alias cy 'codex --yolo'
 end
