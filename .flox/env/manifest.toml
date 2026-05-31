@@ -1,0 +1,18 @@
+version = 1
+
+# Reproducible toolchain for developing the Fish configuration.
+#
+# Activate with `flox activate` from the fish/ directory to get fish and
+# nodejs for syntax checks and markdownlint.
+
+[install]
+fish.pkg-path = "fish"
+nodejs.pkg-path = "nodejs_20"
+
+[options]
+systems = [
+  "aarch64-darwin",
+  "x86_64-darwin",
+  "aarch64-linux",
+  "x86_64-linux",
+]
