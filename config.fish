@@ -107,7 +107,10 @@ source "$HOME/.config/fish/colorscheme/colorscheme.fish"
 # Initialize zoxide (smart cd)
 # Keep this block at the very end of config.fish.
 # zoxide doctor warns when initialization is not last.
+# Gate on interactive shells so non-interactive invocations (e.g. tooling
+# that sources config.fish per command) don't trigger the doctor warning.
 # see: https://github.com/ajeetdsouza/zoxide
-if type -q zoxide
+if status is-interactive
+    and type -q zoxide
     zoxide init fish | source
 end
