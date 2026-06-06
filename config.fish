@@ -2,18 +2,20 @@
 # Core Configuration
 # ==============================================================================
 
-# Load aliases (modular alias files)
-source "$HOME/.config/fish/aliases/aliases.fish"
-
-# Load environment variables and PATH configuration
+# Load environment variables and PATH configuration (needed in all contexts)
 source "$HOME/.config/fish/variables/variables.fish"
 
-# Load custom key bindings
-source "$HOME/.config/fish/keybindings/keybindings.fish"
+if status is-interactive
+    # Load aliases (modular alias files)
+    source "$HOME/.config/fish/aliases/aliases.fish"
 
-# Load functions from subdirectories (Fish doesn't autoload from subdirs)
-for file in $HOME/.config/fish/functions/**/*.fish
-    source $file
+    # Load custom key bindings
+    source "$HOME/.config/fish/keybindings/keybindings.fish"
+
+    # Load functions from subdirectories (Fish doesn't autoload from subdirs)
+    for file in $HOME/.config/fish/functions/**/*.fish
+        source $file
+    end
 end
 
 # ==============================================================================
@@ -51,13 +53,15 @@ end
 
 # Initialize starship prompt
 # see: https://starship.rs
-if type -q starship
-	starship init fish | source
+if status is-interactive
+    and type -q starship
+    starship init fish | source
 end
 
 # Initialize Fisher plugin manager
 # see: https://github.com/jorgebucaran/fisher#bootstrap-installation
-if not functions -q fisher
+if status is-interactive
+    and not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
     fish -c fisher
@@ -65,7 +69,8 @@ end
 
 # Initialize thefuck (command corrector)
 # see: https://github.com/nvbn/thefuck/wiki/Shell-aliases#fish
-if type -q thefuck
+if status is-interactive
+    and type -q thefuck
     thefuck --alias | source
 end
 
@@ -88,7 +93,10 @@ set --prepend PATH $HOME/.local/bin
 # ==============================================================================
 
 # Load colorscheme and theme settings (after PATH is fully initialized)
-source "$HOME/.config/fish/colorscheme/colorscheme.fish"
+# Only in interactive shells: theme.sh writes terminal escapes to /dev/tty
+if status is-interactive
+    source "$HOME/.config/fish/colorscheme/colorscheme.fish"
+end
 
 # ==============================================================================
 # Session Setup
