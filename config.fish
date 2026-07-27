@@ -49,9 +49,31 @@ if test (uname) = "Linux" # Check if OS is Linux
     end
 end
 
-# Initialize starship prompt
+# Load set-me-up profile before prompt initialization.
+set -l smu_profile (set -q XDG_CONFIG_HOME; and echo $XDG_CONFIG_HOME; or echo $HOME/.config)/set-me-up/profile.env
+if test -f "$smu_profile"
+    for line in (string match -r '^export SMU_(THEME|PROMPT)=' <$smu_profile)
+        set -l assignment (string replace 'export ' '' $line)
+        set -l key (string split -m 1 '=' $assignment)[1]
+        set -l value (string trim -c '"' (string split -m 1 '=' $assignment)[2])
+
+        if test "$key" = "SMU_THEME"; and not set -q SMU_THEME
+            set -gx SMU_THEME "$value"
+        else if test "$key" = "SMU_PROMPT"; and not set -q SMU_PROMPT
+            set -gx SMU_PROMPT "$value"
+        end
+    end
+end
+set -q SMU_THEME; or set -gx SMU_THEME gruvbox
+set -q SMU_PROMPT; or set -gx SMU_PROMPT starship
+
+# Initialize prompt
 # see: https://starship.rs
-if type -q starship
+if test "$SMU_PROMPT" = classic
+    function fish_prompt
+        printf '%s@%s:%s%s ' (whoami) (hostname -s) (prompt_pwd) (fish_git_prompt)
+    end
+else if type -q starship
 	starship init fish | source
 end
 

@@ -2,13 +2,22 @@
 
 # Load terminal theme using theme.sh
 # see: https://github.com/lemnos/theme.sh
+set -q SMU_THEME; or set -gx SMU_THEME gruvbox
+
 if type -q theme
-    theme gruvbox-material-dark-medium
+    switch $SMU_THEME
+        case gruvbox
+            theme gruvbox-material-dark-medium
+        case nord
+            theme nord
+        case catppuccin
+            theme catppuccin-macchiato
+    end
 end
 
-# Available themes: nord, gruvbox
-# Set FISH_THEME environment variable to change (default: gruvbox)
-set -q FISH_THEME; or set -g FISH_THEME gruvbox
+# Available themes: gruvbox, nord, catppuccin
+# Set SMU_THEME or FISH_THEME environment variable to change (default: gruvbox)
+set -q FISH_THEME; or set -g FISH_THEME $SMU_THEME
 
 set -g theme_color_scheme $FISH_THEME
 set -g theme_display_user yes
@@ -46,9 +55,20 @@ switch $FISH_THEME
         
         # Nord for Bat
         set BAT_THEME "Nord"
+
+    case catppuccin
+        # Catppuccin Macchiato for fzf
+        # see: https://github.com/catppuccin/fzf
+        set -gx FZF_DEFAULT_OPTS '
+            --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796
+            --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6
+            --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796'
+
+        # Catppuccin for Bat
+        set BAT_THEME "Catppuccin-macchiato"
     
     case '*'
-        echo "Warning: Theme '$FISH_THEME' not found. Available themes: nord, gruvbox"
+        echo "Warning: Theme '$FISH_THEME' not found. Available themes: gruvbox, nord, catppuccin"
         echo "Defaulting to gruvbox..."
         set -g FISH_THEME gruvbox
 end
