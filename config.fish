@@ -71,12 +71,13 @@ set -q SMU_PROMPT; or set -gx SMU_PROMPT starship
 
 # Initialize prompt
 # see: https://starship.rs
-if status is-interactive; and test "$SMU_PROMPT" = classic
-    function fish_prompt
-        printf '%s@%s:%s%s ' (whoami) (hostname -s) (prompt_pwd) (fish_git_prompt)
+if status is-interactive
+    set -l prompt_adapter "$HOME/.config/fish/prompts/$SMU_PROMPT.fish"
+    if test -r "$prompt_adapter"
+        source "$prompt_adapter"
+    else if type -q starship
+        starship init fish | source
     end
-else if status is-interactive; and type -q starship
-	starship init fish | source
 end
 
 # Initialize Fisher plugin manager
