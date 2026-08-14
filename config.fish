@@ -134,6 +134,13 @@ end
 #    exec tmux
 # end
 
+# Initialize atuin
+# see: https://github.com/atuinsh/atuin
+if status is-interactive
+    and type -q atuin
+    atuin init fish | source
+end
+
 # Initialize zoxide (smart cd)
 # Keep this block at the very end of config.fish.
 # zoxide doctor warns when initialization is not last.
