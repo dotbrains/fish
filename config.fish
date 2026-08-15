@@ -141,6 +141,15 @@ if status is-interactive
     atuin init fish | source
 end
 
+# Initialize television (Ctrl-T autocomplete only).
+# Ctrl-R stays owned by atuin -- tv's default Ctrl-R history binding is
+# stripped here to avoid the two tools fighting over the same key.
+# see: https://github.com/alexpasmantier/television
+if status is-interactive
+    and type -q tv
+    tv init fish | grep -v 'ctrl-r tv_shell_history' | source
+end
+
 # Initialize zoxide (smart cd)
 # Keep this block at the very end of config.fish.
 # zoxide doctor warns when initialization is not last.
