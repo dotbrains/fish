@@ -54,15 +54,14 @@ end
 # Load set-me-up profile before prompt initialization.
 set -l smu_profile (set -q XDG_CONFIG_HOME; and echo $XDG_CONFIG_HOME; or echo $HOME/.config)/set-me-up/profile.env
 if test -f "$smu_profile"
-    for line in (string match -r '^export SMU_(THEME|PROMPT)=' <$smu_profile)
-        set -l assignment (string replace 'export ' '' $line)
-        set -l key (string split -m 1 '=' $assignment)[1]
-        set -l value (string trim -c '"' (string split -m 1 '=' $assignment)[2])
-
-        if test "$key" = "SMU_THEME"; and not set -q SMU_THEME
-            set -gx SMU_THEME "$value"
-        else if test "$key" = "SMU_PROMPT"; and not set -q SMU_PROMPT
-            set -gx SMU_PROMPT "$value"
+    for key in THEME PROMPT
+        set -l value (string match -r -g "^export SMU_$key=\"?([^\"]*)\"?\$" <$smu_profile)
+        if test -n "$value"
+            if test "$key" = "THEME"; and not set -q SMU_THEME
+                set -gx SMU_THEME "$value"
+            else if test "$key" = "PROMPT"; and not set -q SMU_PROMPT
+                set -gx SMU_PROMPT "$value"
+            end
         end
     end
 end
