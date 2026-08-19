@@ -7,7 +7,7 @@ set -q SMU_THEME; or set -gx SMU_THEME gruvbox
 if type -q theme
     switch $SMU_THEME
         case gruvbox
-            theme gruvbox-material-dark-medium
+            theme gruvbox-dark
         case nord
             theme nord
         case catppuccin
