@@ -10,8 +10,6 @@ if type -q theme
             theme gruvbox-dark
         case nord
             theme nord
-        case catppuccin
-            theme catppuccin-macchiato
         case tokyo-night
             theme tokyo-night
         case rose-pine
@@ -22,8 +20,8 @@ if type -q theme
             theme everforest
         case solarized
             theme solarized-dark
-        case kanagawa
-            theme kanagawa
+        # catppuccin and kanagawa have no theme.sh equivalent; skip terminal
+        # palette sync for those (fzf/bat/nvim still get themed below)
     end
 end
 
